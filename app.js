@@ -50,15 +50,10 @@ console.log("I'm here");
 
 
     // config for your database
-    var config = {
-        user: 'sa',
-        password: '123456',
-        server: 'CYG190',
-        database: 'hrms2'
-    };
+   var dbURL=process.env.TUNNELEND;
 
     // connect to your database
-    sql.connect(config, function (err) {
+    sql.connect(dbURL, function (err) {
 
         if (err) console.log(err);});
 
