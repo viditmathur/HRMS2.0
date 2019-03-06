@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="js/admin.js"></script>
+    </head>
+    <body>
+        <div class="header" >
+            <div class="row">
+                <div class="col-md-10">
+                    <img src="logo.png" alt="logo" />
+                </div>
+                <div class = "col-md-2 ">
+                    <span>
+                        <img src = "logo.png" alt = "img" class="rounded-circle" width="50" height="50">
+                    </span> 
+                    <button type="button" class="btn btn-link">User Name</button>
+                </div>
+            </div>
+        </div>
+        <div id="accordion">
+            <nav class = "navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class = "container-fluid">
+                    <button class="navbar-toggler" 
+                            type="button" 
+                            data-toggle="collapse" 
+                            data-target="#navBarMenu" 
+                            aria-controls="navBarMenu" 
+                            aria-expanded="false" 
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id = "navBarMenu">
+                        <ul class="nav">
+                            <li class = "nav-item active ">
+                                <a href="#" class="nav-link" data-toggle="collapse" data-target="#createuser"  >Create User </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a href = "#"  class="nav-link"  data-toggle="collapse" data-target="#usertable" id="userTable1" >User List</a>
+                            </li>
+                            <li class = "nav-item">
+                                <a href = "#" class="nav-link" data-toggle="collapse" data-target="#skillset" id="skillTable1">Skills </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class = "nav navbar-right">
+                            <li class = "nav-item" ><a href = "#" class="nav-link">Log-out </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="container collapse " id="createuser" data-parent="#accordion">
+                <div>
+                    <h2>Hello, Admin!</h2>
+                    <div class="cgi">(CGI-027)</div>
+                </div>
+                <div class="container">
+                    <div class= "row">
+                        <div class = "col-md-2">First Name:</div> 
+                        <div class = "col-md-4">
+                            <input type="text" class="form-control" id="fname" placeholder="First Name" name="fname">
+                        </div>
+                        <div class = "col-md-2">Last Name:</div> 
+                        <div class = "col-md-4">
+                            <input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname">
+                        </div>
+
+                    </div><br>
+                    <div class= "row">
+                        <div class = "col-md-2">Nick Name:</div> 
+                        <div class = "col-md-4">
+                            <input type="text" class="form-control" id="nname" placeholder="Nick Name" name="nname" disabled>
+                        </div>
+                        <div class = "col-md-2">Location:</div> 
+                        <div class = "col-md-4">
+                            <input type="text" class="form-control" id="location"  name="location">
+                        </div>
+                    </div><br>
+                    <div class= "row">
+                        <div class = "col-md-2">Email:</div> 
+                        <div class = "col-md-4">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                        </div>
+                        <div class = "col-md-2">Designation:</div> 
+                        <div class = "col-md-4">
+                            <input type="text" class="form-control" id="designation" placeholder="Intern" name="designation">
+                        </div>
+                    </div><br>
+                    <div class= "row">
+                        <div class = "col-md-2">Password:</div> 
+                        <div class = "col-md-4">
+                            <input type="password" class="form-control" id="password" placeholder="password" name="password">
+                        </div>
+                        <div class = "col-md-2">Department:</div> 
+                        <div class = "col-md-4">
+                            <input type="text" class="form-control" id="department" placeholder="department" name="departemnt">
+                        </div>
+                    </div><br>
+                    <div class= "row">
+                        <div class = "col-md-2">Date-of-joining:</div> 
+                        <div class = "col-md-4">
+                            <input type="text" class="form-control" id="DOJ" placeholder="DOJ" name="DOJ" >
+                        </div>
+
+
+                    </div><br>
+
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn btn-primary" id="bt1" onclick="submission()">Create User </button>
+                    </div>
+                </div><br>
+
+
+                <div class = "container collapse  " id = "usertable" data-parent = "#accordion" >
+
+                    <div class="table-responsive table-hover"> 
+                        <table class="table table-striped " id = "user_table" >
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class = "container collapse " id = "skillset" data-parent = "#accordion" >
+                    <button type="submit" class="btn btn-primary" id="skillbtn" data-toggle = "collapse" data-target = "#skillform">
+                        Add SKill
+                    </button>
+                    <table class="table table-striped " id = "skills">
+                        <thead>
+                            <tr>
+                                <th>Skill</th>
+                                <th>Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table><br>
+                    <div class= "row collapse" id ="skillform">
+                        <div class = "col-md-2">Skill:</div> 
+                        <div class = "col-md-3">
+                            <input type="text" class="form-control" id="skill" placeholder="Skill" name="skill" >
+                        </div>
+                        <div class = "col-md-2">Implementation:</div> 
+                        <div class = "col-md-3">
+                            <input type="text" class="form-control" id="implementation" placeholder="Implementation" name="implementation">
+                        </div> 
+                        <button  type="submit" class="btn btn-primary" id="bt2"  >Submit</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

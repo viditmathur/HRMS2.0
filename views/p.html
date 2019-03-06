@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="../css/bootstrap.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+                       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body onload="getEmployeeDetail();">
+        <div class="header">
+            <div class="row">
+                <div class="col-md-10">
+                    <img src="logo.png" alt="logo" />
+                </div>
+                <div class = "col-md-2 ">
+                    <button type="button" class="btn btn-link">User Name</button>
+                </div>
+            </div>
+        </div>
+         <div class="alert alert-danger d-none">
+                     Please enter valid details.
+                     <button class="close" data-dismiss="alert">&times;</button> 
+              </div>
+        <div id = "accordion"> 
+            <nav class = "navbar navbar-expand-md bg-dark navbar-dark">
+                <div class = "container-fluid">
+                    <button class="navbar-toggler" 
+                            type="button" 
+                            data-toggle="collapse" 
+                            data-target="#navBarMenu" 
+                            aria-controls="navBarMenu" 
+                            aria-expanded="false" 
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id = "navBarMenu">
+                        <ul class="nav">
+                            <li class = "nav-item">
+                                <a href="#" class="nav-link" data-toggle="collapse" data-target="#details">Details </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a href = "#" class="nav-link" data-toggle="collapse" data-target="#skilltable">Skills </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a href = "#" class="nav-link" data-toggle="collapse" data-target="#leavedetail">Leaves </a>
+                            </li>
+                            <li class = "nav-item">
+                                <a href = "#" class="nav-link" data-toggle="collapse" data-target="#projects">Project(s) </a>
+                            </li>
+                            <li class = "nav-item">
+                                       <a href = "#" class="nav-link" data-toggle="collapse" data-target="#reviews">Reviews </a>
+                                   </li>
+                                    <li class = "nav-item">
+                                       <a href = "#" class="nav-link" data-toggle="collapse" data-target="#policy">Policy</a>
+                                   </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class = "nav navbar-right">
+                            <li class = "nav-item">
+                                <a href = "#" class="nav-link">Log-out </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+            <div class="container collapse show" id = "details" data-parent="#accordion" onload="getEmployeeDetail();">
+                <div>
+                    <h2>Hello, User!</h2>
+                    <div class="cgi"></div>
+                </div>
+                <div class= "row">
+                    <div class = "col-md-2 text">First Name:</div> 
+                    <div class = "col-md-4">
+                        <input type="text" class="form-control" id="fname" name="fname" disabled>
+                    </div>
+                    <div class = "col-md-2 text">Last Name:</div> 
+                    <div class = "col-md-4">
+                        <input type="text" class="form-control" id="lname" name="lname" disabled>
+                    </div>
+
+                </div><br>
+                <div class= "row">
+                    <div class = "col-md-2 text">Nick Name:</div> 
+                    <div class = "col-md-4">
+                        <input type="text" class="form-control" id="nname" name="nname">
+                    </div>
+                    <div class = "col-md-2 text">Location:</div> 
+                    <div class = "col-md-4">
+                        <input type="text" class="form-control" id="location" value="Noida" name="location" disabled>
+                    </div>
+                </div><br>
+                <div class= "row">
+                    <div class = "col-md-2 text">Email:</div> 
+                    <div class = "col-md-4">
+                        <input type="email" class="form-control" id="email" name="email" disabled>
+                    </div>
+                    <div class = "col-md-2 text">Designation:</div> 
+                    <div class = "col-md-4">
+                        <input type="text" class="form-control" id="designation" name="designation" disabled>
+                    </div>
+                </div><br>
+                <div class= "row">
+                    <div class = "col-md-2 text">Experience:</div> 
+                    <div class = "col-md-4">
+                        <input type="number" class="form-control" id="experience" name="exp">
+                    </div>
+                    <div class = "col-md-2 text">Department:</div> 
+                    <div class = "col-md-4">
+                        <input type="text" class="form-control" id="division" name="department" disabled>
+                    </div>
+                </div><br>
+                <div class= "row">
+                    <div class = "col-md-2 text">Date-of-birth:</div> 
+                    <div class = "col-md-4">
+                        <input type="date" class="form-control" id="DOB" name="DOB">
+                    </div>
+                    <div class = "col-md-2 text">Date-of-joining:</div> 
+                    <div class = "col-md-4">
+                        <input type="date" class="form-control" id="DOJ" name="DOJ" disabled>
+                    </div>
+
+                </div>
+                <div class="row justify-content-center">
+                    <button type="submit" class="btn btn-primary" onclick="updatedetails();">Submit</button>
+                </div>
+            </div>                
+            <div class = "container collapse" id = "skilltable" data-parent="#accordion">
+                <button type="submit" class="btn btn-primary" id="skillbtn" data-toggle = "collapse" data-target = "#skillform">
+                    Add SKill
+                </button>
+                <table class="table table-striped " id = "skills">
+                    <thead>
+                        <tr>
+                            <th>Skill</th>
+                            <th>Implementation</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table><br>
+                <div class= "row collapse" id ="skillform">
+                    <div class = "col-md-2">Skill:</div> 
+                    <div class = "col-md-3" >
+                        <select id="skilldrop" style="width: 100%;height: 30px;">
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary " onclick="skillupdate();">Submit</button>            
+                </div>
+            </div>
+        </div>      
+    </body>
+    <script src="../js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+</html>

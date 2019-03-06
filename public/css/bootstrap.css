@@ -1,0 +1,77 @@
+.row{
+    background-color: white;
+}
+a{
+    color: white;
+}
+.col-md-1{
+     border: 2px solid black;
+}
+.col-md-2{
+    text-align: right;
+    font-weight: bold;
+}
+h2{
+    text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+
+}
+.cgi{
+    
+    text-align: right;
+}
+a:hover{
+    font-weight: bolder;
+    color: white;
+    
+}
+button{
+    align-content: center;
+    align-items: center;
+}
+.justify-content-center{
+    top: 20px;
+    position: relative;
+}
+.bold{
+    font-weight: bolder;
+    text-align: center;
+}
+td, th{
+    text-align: center;
+}
+#skills{
+    margin-top: 70px;
+}
+#skillbtn{
+    margin-top: 10px;
+    float: right;
+    margin-bottom: 10px;
+}
+@media screen and (max-width : 768px){
+    .nav{
+        display: block;
+    }  
+li{
+    display: block;
+}
+    .text{
+        text-align: left;
+    }
+    .btn{
+        margin-bottom: 15px;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    .header{
+        margin-left: 5px;
+    }
+}
+.fa, .far{
+    color:black;
+}
+
+

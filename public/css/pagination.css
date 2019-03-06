@@ -1,0 +1,64 @@
+#container_div{
+    width: 600px;
+    margin: 0 auto;
+}
+#pagination_nav{
+    margin-top: 5px;
+text-align:-webkit-center;
+}
+
+#pagination_nav2{
+text-align:-webkit-center;
+}
+#pagination_nav div {
+    display: inline;
+}
+#pagination_nav div button{
+    height: 30px;
+    width: 30px;
+    /* text-align: center; */
+    border: none;
+    border-radius: 50%;
+    margin: 10px;
+    background-color: #3770cc;
+}
+#pagination_nav a{
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+#pagination_nav div button:hover{
+    background-color: #709be0;
+}
+#btn_div{
+    display: table-cell;
+}
+
+
+
+#pagination_nav2{
+    margin-top: 5px;
+}
+#pagination_nav2 div {
+    display: inline;
+}
+#pagination_nav2 div button{
+    height: 30px;
+    width: 30px;
+    /* text-align: center; */
+    border: none;
+    border-radius: 50%;
+    margin: 10px;
+    background-color:#3770cc;
+}
+#pagination_nav2 a{
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+#pagination_nav2 div button:hover{
+    background-color: #709be0;
+}
+#btn_div{
+    display: table-cell;
+}
