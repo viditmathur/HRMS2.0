@@ -1,12 +1,4 @@
 var array=[];
-function checkForNull(item){
-    if(item.value==""){
-
-    }
-    else{
-
-    }
-}
 var userId="1";
 function formatDate(date){
     var today = new Date(date); 
@@ -95,11 +87,18 @@ function skillupdate(){
 }
 
 function updatedetails(){
-    var dataToSend={
-        "NickName":document.getElementById("nname").value,
-        "DateOfBirth":document.getElementById("DOB").value,
-        "Experience":document.getElementById("experience").value
+    var nname = document.getElementById("nname").value;
+    var dob = document.getElementById("DOB").value;
+    var experience = document.getElementById("experience").value;
+    if(nname==''||dob==''||experience==''){
+        alert('Fill all records!!!');
     }
+    else{
+        var dataToSend={
+            "NickName":nname,
+            "DateOfBirth":dob,
+            "Experience":experience
+        }
     $.ajax({
         url:'https://'+'emphrms.herokuapp.com'+'/employee/update/'+userId,
         type: 'PATCH',
