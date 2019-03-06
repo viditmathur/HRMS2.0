@@ -226,7 +226,7 @@ $(document).ready(function(){
 
 function changeStatus(userId){
     $.ajax({
-        type:'PUT',
+        type:'PATCH',
         url:'https://emphrms.herokuapp.com/delete/'+userId,
         success:function(data){
 
