@@ -1,4 +1,5 @@
 var updateId="";
+var baseUrl = process.env.URL;
 $(document).ready(function(){ 
 
     function escapeHtml(text) {
@@ -74,7 +75,7 @@ $(document).ready(function(){
         limit=2;
         $.ajax({
             type:'GET',
-            url: 'https://'+process.env.URL+'/count',
+            url: 'https://'+baseUrl+'/count',
             headers:{
 
                 "limit":limit
