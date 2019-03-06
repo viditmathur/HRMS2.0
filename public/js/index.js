@@ -21,7 +21,7 @@ function formatDate(date){
 
 function getEmployeeDetail(){
     $.ajax({
-        url:'https://'+process.env.URL+'/employee/'+userId,
+        url:'https://'+emphrms.herokuapp.com+'/employee/'+userId,
         type: 'GET',
         dataType: 'json',
         success: function(data){
@@ -41,7 +41,7 @@ function getEmployeeDetail(){
 
     $.ajax({
         type: 'GET',
-        url: 'https://'+process.env.URL+'/skill/getAll',  
+        url: 'https://'+emphrms.herokuapp.com+'/skill/getAll',  
         success: function (data) {
             console.log(data);
             for (i = 0; i < data.length; i++) {
@@ -53,13 +53,13 @@ function getEmployeeDetail(){
     });
 
     $.ajax({
-        url: 'https://'+process.env.URL+'/techStack/'+userId,
+        url: 'https://'+emphrms.herokuapp.com+'/techStack/'+userId,
         type: 'GET',
         dataType: 'json',
         success: function(data){
             for(i=0; i<data.length;i++){
                 $.ajax({
-                    url: 'https://'+process.env.URL+'/skills/'+data[i].SkillId,
+                    url: 'https://'+emphrms.herokuapp.com+'/skills/'+data[i].SkillId,
                     type: 'GET',
                     dataType: 'json',
                     success: function(data){
@@ -83,7 +83,7 @@ function skillupdate(){
     console.log(newskilldata);
     $.ajax({
         type: 'POST',
-        url: 'https://'+process.env.URL+'/addskillbyid/' + userId,    
+        url: 'https://'+emphrms.herokuapp.com+'/addskillbyid/' + userId,    
         data: newskilldata,
         success: function (data) {
             location.reload();
@@ -101,7 +101,7 @@ function updatedetails(){
         "Experience":document.getElementById("experience").value
     }
     $.ajax({
-        url:'https://'+process.env.URL+'/employee/update/'+userId,
+        url:'https://'+emphrms.herokuapp.com+'/employee/update/'+userId,
         type: 'PATCH',
         data:dataToSend,
         success: function(data){
@@ -115,7 +115,7 @@ function updatedetails(){
 
 function deleteSkills(skillId){
     $.ajax({
-        url:'https://'+process.env.URL+'/techStack/'+userId+"/"+skillId,
+        url:'https://'+emphrms.herokuapp.com+'/techStack/'+userId+"/"+skillId,
         type: 'DELETE',
         success: function(data){
             location.reload();
