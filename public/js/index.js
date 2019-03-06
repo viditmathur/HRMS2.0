@@ -21,7 +21,7 @@ function formatDate(date){
 
 function getEmployeeDetail(){
     $.ajax({
-        url:'http://localhost:5000/employee/'+userId,
+        url:'https://localhost:5000/employee/'+userId,
         type: 'GET',
         dataType: 'json',
         success: function(data){
@@ -41,7 +41,7 @@ function getEmployeeDetail(){
 
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:5000/skill/getAll',  
+        url: 'https://localhost:5000/skill/getAll',  
         success: function (data) {
             console.log(data);
             for (i = 0; i < data.length; i++) {
@@ -53,13 +53,13 @@ function getEmployeeDetail(){
     });
 
     $.ajax({
-        url: 'http://localhost:5000/techStack/'+userId,
+        url: 'https://localhost:5000/techStack/'+userId,
         type: 'GET',
         dataType: 'json',
         success: function(data){
             for(i=0; i<data.length;i++){
                 $.ajax({
-                    url: 'http://localhost:5000/skills/'+data[i].SkillId,
+                    url: 'https://localhost:5000/skills/'+data[i].SkillId,
                     type: 'GET',
                     dataType: 'json',
                     success: function(data){
@@ -83,7 +83,7 @@ function skillupdate(){
     console.log(newskilldata);
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:5000/addskillbyid/' + userId,    
+        url: 'https://localhost:5000/addskillbyid/' + userId,    
         data: newskilldata,
         success: function (data) {
             location.reload();
@@ -101,7 +101,7 @@ function updatedetails(){
         "Experience":document.getElementById("experience").value
     }
     $.ajax({
-        url:'http://localhost:5000/employee/update/'+userId,
+        url:'https://localhost:5000/employee/update/'+userId,
         type: 'PATCH',
         data:dataToSend,
         success: function(data){
@@ -115,7 +115,7 @@ function updatedetails(){
 
 function deleteSkills(skillId){
     $.ajax({
-        url:'http://localhost:5000/techStack/'+userId+"/"+skillId,
+        url:'https://localhost:5000/techStack/'+userId+"/"+skillId,
         type: 'DELETE',
         success: function(data){
             location.reload();

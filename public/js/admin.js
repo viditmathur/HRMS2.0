@@ -54,7 +54,7 @@ $(document).ready(function(){
         };
 
         $.ajax({
-            url: 'http://localhost:5000/employee',
+            url: 'https://localhost:5000/employee',
             data: dataToSend,
             type:'POST',
             dataType:'json',
@@ -74,7 +74,7 @@ $(document).ready(function(){
         limit=2;
         $.ajax({
             type:'GET',
-            url: 'http://localhost:5000/count',
+            url: 'https://localhost:5000/count',
             headers:{
 
                 "limit":limit
@@ -94,7 +94,7 @@ $(document).ready(function(){
 
                     $.ajax({
                         type: 'GET',
-                        url: 'http://localhost:5000/employee',   
+                        url: 'https://localhost:5000/employee',   
                         headers:{
 
                             "pagenumber":1,
@@ -148,7 +148,7 @@ $(document).ready(function(){
 
         $.ajax({
             type:'GET',
-            url: 'http://localhost:5000/count2',
+            url: 'https://localhost:5000/count2',
             headers:{
 
                 "limit":limit
@@ -168,7 +168,7 @@ $(document).ready(function(){
 
                     $.ajax({
                         type: 'GET',
-                        url: 'http://localhost:5000/skills', 
+                        url: 'https://localhost:5000/skills', 
                         dataType:'json',
                         headers:{
 
@@ -212,7 +212,7 @@ $(document).ready(function(){
         };
 
         $.ajax({
-            url: 'http://localhost:5000/skill',
+            url: 'https://localhost:5000/skill',
             data: dataToSend,
             type:'POST',
             dataType:'json',
@@ -227,7 +227,7 @@ $(document).ready(function(){
 function changeStatus(userId){
     $.ajax({
         type:'PUT',
-        url:'http://localhost:5000/delete/'+userId,
+        url:'https://localhost:5000/delete/'+userId,
         success:function(data){
 
             document.getElementById(userId).disabled=true;
@@ -244,7 +244,7 @@ function loadPageData2(page){
     var pageNumber = page;
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:5000/skills', 
+        url: 'https://localhost:5000/skills', 
         dataType:'json',
         headers:{
 
@@ -275,7 +275,7 @@ function loadPageData(page){
     var pageNumber = page;
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:5000/employee', 
+        url: 'https://localhost:5000/employee', 
         dataType:'json',
         headers:{
 
@@ -327,7 +327,7 @@ function loadDataForUpdate(user){
     updateId = user;
     $.ajax({
         type:'GET',
-        url:'http://localhost:5000/employee/'+user,
+        url:'https://localhost:5000/employee/'+user,
         success:function(data){
             console.log(data);
             document.getElementById('fname_update').value = data.FirstName;
@@ -356,7 +356,7 @@ function updateEmployee(){
     console.log(dataToSend);
     $.ajax({
         type:'PATCH',
-        url:'http://localhost:5000/employee/'+updateId,
+        url:'https://localhost:5000/employee/'+updateId,
         data:dataToSend,
         success:function(data){
             alert(data);
