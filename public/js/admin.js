@@ -54,7 +54,7 @@ $(document).ready(function(){
         };
 
         $.ajax({
-            url: 'https://'emphrms.herokuapp.com'/employee',
+            url: 'https://emphrms.herokuapp.com/employee',
             data: dataToSend,
             type:'POST',
             dataType:'json',
@@ -74,7 +74,7 @@ $(document).ready(function(){
         limit=2;
         $.ajax({
             type:'GET',
-            url: 'https://'emphrms.herokuapp.com'/count',
+            url: 'https://emphrms.herokuapp.com/count',
             headers:{
 
                 "limit":limit
@@ -94,7 +94,7 @@ $(document).ready(function(){
 
                     $.ajax({
                         type: 'GET',
-                        url: 'https://'emphrms.herokuapp.com'/employee',   
+                        url: 'https://emphrms.herokuapp.com/employee',   
                         headers:{
 
                             "pagenumber":1,
@@ -148,7 +148,7 @@ $(document).ready(function(){
 
         $.ajax({
             type:'GET',
-            url: 'https://'emphrms.herokuapp.com'/count2',
+            url: 'https://emphrms.herokuapp.com/count2',
             headers:{
 
                 "limit":limit
@@ -168,7 +168,7 @@ $(document).ready(function(){
 
                     $.ajax({
                         type: 'GET',
-                        url: 'https://'emphrms.herokuapp.com'/skills', 
+                        url: 'https://emphrms.herokuapp.com/skills', 
                         dataType:'json',
                         headers:{
 
@@ -203,16 +203,16 @@ $(document).ready(function(){
     function addskills(){
 
 
-        var name= document.getElementById("skillname").value;
+        var SkillName= document.getElementById("skillname").value;
         var category= document.getElementById("implementation").value;
         var dataToSend={
-            "Name":name,
+            "SkillName":SkillName,
             "Category":category,
 
         };
 
         $.ajax({
-            url: 'https://'emphrms.herokuapp.com'/skill',
+            url: 'https://emphrms.herokuapp.com/skill',
             data: dataToSend,
             type:'POST',
             dataType:'json',
@@ -227,7 +227,7 @@ $(document).ready(function(){
 function changeStatus(userId){
     $.ajax({
         type:'PATCH',
-        url:'https://'emphrms.herokuapp.com'/delete/'+userId,
+        url:'https://emphrms.herokuapp.com/delete/'+userId,
         success:function(data){
 
             document.getElementById(userId).disabled=true;
@@ -244,7 +244,7 @@ function loadPageData2(page){
     var pageNumber = page;
     $.ajax({
         type: 'GET',
-        url: 'https://'emphrms.herokuapp.com'/skills', 
+        url: 'https://emphrms.herokuapp.com/skills', 
         dataType:'json',
         headers:{
 
@@ -275,7 +275,7 @@ function loadPageData(page){
     var pageNumber = page;
     $.ajax({
         type: 'GET',
-        url: 'https://'emphrms.herokuapp.com'/employee', 
+        url: 'https://emphrms.herokuapp.com/employee', 
         dataType:'json',
         headers:{
 
@@ -327,7 +327,7 @@ function loadDataForUpdate(user){
     updateId = user;
     $.ajax({
         type:'GET',
-        url:'https://'emphrms.herokuapp.com'/employee/'+user,
+        url:'https://emphrms.herokuapp.com/employee/'+user,
         success:function(data){
             console.log(data);
             document.getElementById('fname_update').value = data.FirstName;
@@ -356,7 +356,7 @@ function updateEmployee(){
     console.log(dataToSend);
     $.ajax({
         type:'PATCH',
-        url:'https://'emphrms.herokuapp.com'/employee/'+updateId,
+        url:'https://emphrms.herokuapp.com/employee/'+updateId,
         data:dataToSend,
         success:function(data){
             alert(data);
