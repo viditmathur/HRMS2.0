@@ -167,7 +167,7 @@ router.post("/employee", (req, res, next) => {
                             console.log(err);}
                         else
                         {
-                            sgMail.setApiKey('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');
+                            sgMail.setApiKey(process.env.SENDGRID);
                             const msg = {
                                 to: req.body.Email,
                                 from: 'admin12@cygrp.com',
