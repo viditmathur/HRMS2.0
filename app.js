@@ -25,7 +25,7 @@ console.log("I'm here");
     });
 	
 	app.get('/',(req,res)=>{
-		res.sendFile('/views/index.html',{root:__dirname});
+		res.sendFile('/views/'+process.env.PAGE,{root:__dirname});
 	});
 	app.use(express.static(__dirname +'/public'));
 	app.use(express.static(__dirname +'/views'));
