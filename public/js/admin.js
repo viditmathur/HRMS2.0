@@ -69,8 +69,8 @@ $(document).ready(function(){
                         type:'POST',
                         dataType:'json',
                         success:function(res){
-                            console.log(res);
-
+                            alert("User added!!!");
+                            location.reload();
                         }
                     });
                 }
@@ -130,15 +130,12 @@ $(document).ready(function(){
                                     );
                                 }
                             } 
-
                         }  
                     });
                 }
             }
         });
     }
-
-
 
     $("#skillTable1").click(getskills);
     function getskills(){
@@ -186,10 +183,9 @@ $(document).ready(function(){
             }
         });
     }
-
 });
-function addskills(){
 
+function addskills(){
     var name= document.getElementById("skillname").value;
     var category= document.getElementById("implementation").value;
     if(name==''||category==''){
@@ -211,6 +207,7 @@ function addskills(){
         });
     }
 }
+
 function changeStatus(userId){
     $.ajax({
         type:'PATCH',
@@ -224,6 +221,7 @@ function changeStatus(userId){
         }
     });
 }
+
 function loadPageData2(page){
     var pageNumber = page;
     $.ajax({
@@ -248,6 +246,7 @@ function loadPageData2(page){
         }  
     });
 }
+
 function loadPageData(page){
     var pageNumber = page;
     $.ajax({
@@ -286,6 +285,7 @@ function loadPageData(page){
         }  
     });
 }
+
 function formatDate(date){
     var today = new Date(date); 
     var dd = today.getDate(); 
@@ -296,13 +296,13 @@ function formatDate(date){
     var formattedDate = yyyy+"-"+mm+"-"+dd;
     return formattedDate;
 }
+
 function loadDataForUpdate(user){
     updateId = user;
     $.ajax({
         type:'GET',
         url:'https://emphrms.herokuapp.com/employee/'+user,
         success:function(data){
-            console.log(data);
             document.getElementById('fname_update').value = data.FirstName;
             document.getElementById('lname_update').value = data.LastName;
             document.getElementById('nname_update').value = data.NickName;
@@ -314,6 +314,7 @@ function loadDataForUpdate(user){
         }
     });
 }
+
 function updateEmployee(){
     var fname=document.getElementById('fname_update').value;
     var lname=document.getElementById('lname_update').value;
@@ -353,4 +354,3 @@ function updateEmployee(){
         }
     }
 }
-
