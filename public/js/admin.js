@@ -239,7 +239,7 @@ $(document).ready(function(){
             }
         });
     }
-});
+}
 
 function changeStatus(userId){
     $.ajax({
