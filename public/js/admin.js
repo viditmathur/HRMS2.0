@@ -6,9 +6,7 @@ function validateEmail(emailField){
     }
     return true;
 }
-
 $(document).ready(function(){ 
-
     function escapeHtml(text) {
         var map = {
             '&': '&amp;',
@@ -17,14 +15,11 @@ $(document).ready(function(){
             '"': '&quot;',
             "'": '&#039;'
         };
-
         return text.replace(/[&<>"']/g, function(m) { return map[m]; });
     }
-
     String.prototype.stripSlashes = function(){
         return this.replace(/\\(.)/mg, "$1");
     }
-
 
     function validateData(data){
         data = data.trim();
@@ -32,12 +27,7 @@ $(document).ready(function(){
         data = escapeHtml(data);
         return data;
     }
-
-
-
-
     $("#bt1").click(submission);
-
     function submission(){
         var first_name= document.getElementById("fname").value;
         var last_name= document.getElementById("lname").value;
@@ -73,31 +63,27 @@ $(document).ready(function(){
                         "Password":password,
                         "Status":"Active"
                     };
+                    $.ajax({
+                        url: 'https://emphrms.herokuapp.com/employee',
+                        data: dataToSend,
+                        type:'POST',
+                        dataType:'json',
+                        success:function(res){
+                            console.log(res);
 
-        $.ajax({
-            url: 'https://emphrms.herokuapp.com/employee',
-            data: dataToSend,
-            type:'POST',
-            dataType:'json',
-            success:function(res){
-                console.log(res);
-
-
+                        }
+                    });
+                }
             }
-        });
+        }
     }
-
-
     $("#userTable1").click(getemployee);
-
     function getemployee(){
-
         limit=2;
         $.ajax({
             type:'GET',
             url: 'https://emphrms.herokuapp.com/count',
             headers:{
-
                 "limit":limit
             },
             success: function(data){
@@ -112,12 +98,10 @@ $(document).ready(function(){
                             "</div>"
                         );
                     }
-
                     $.ajax({
                         type: 'GET',
                         url: 'https://emphrms.herokuapp.com/employee',   
                         headers:{
-
                             "pagenumber":1,
                             "limit":2
                         },
@@ -127,9 +111,7 @@ $(document).ready(function(){
                             $("#user_table").append('<tr><th>Name</th><th>Email</th><th>Status</th><th>Update</th><th>Delete</th></tr>');
                             for (i = 0; i < data.recordset.length; i++) {
                                 console.log(data.recordset[i].FirstName);
-
                                 if(data.recordset[i].Status=='Inactive'){
-
                                     $("#user_table").append(
                                         '<tr><td id = "name">' +data.recordset[i].FirstName +" "+ data.recordset[i].LastName+
                                         '</td><td id = "Email">' + data.recordset[i].Email +
@@ -138,7 +120,6 @@ $(document).ready(function(){
                                     );
                                 }
                                 else{
-
                                     $("#user_table").append(
                                         '<tr><td id = "name">' +data.recordset[i].FirstName +" "+ data.recordset[i].LastName+
                                         '</td><td id = "Email">' + data.recordset[i].Email +
@@ -150,7 +131,6 @@ $(document).ready(function(){
                                 }
                             } 
 
-
                         }  
                     });
                 }
@@ -160,18 +140,13 @@ $(document).ready(function(){
 
 
 
-
-
-
     $("#skillTable1").click(getskills);
     function getskills(){
         limit=5;
-
         $.ajax({
             type:'GET',
             url: 'https://emphrms.herokuapp.com/count2',
             headers:{
-
                 "limit":limit
             },
             success: function(data){
@@ -186,17 +161,14 @@ $(document).ready(function(){
                             "</div>"
                         );
                     }
-
                     $.ajax({
                         type: 'GET',
                         url: 'https://emphrms.herokuapp.com/skills', 
                         dataType:'json',
                         headers:{
-
                             "pagenumber":1,
                             "limit":5
                         },
-
                         success: function(data) {
                             $("#skills").empty();
                             $('#skills').append('<tr><th>Skill</th><th>Implementation</th></tr>');
@@ -206,29 +178,28 @@ $(document).ready(function(){
                                     '<tr><td id="name">' + data.recordset[i].Name+
                                     '</td><td id="category">' + data.recordset[i].Category+
                                     '</td></tr>'
-
                                 );
-
                             }  
                         }  
                     });
                 }
-
             }
         });
     }
 
-    function addskills(){
-        var SkillName= document.getElementById("skillname").value;
-        var category= document.getElementById("implementation").value;
-        if(name==''||category==''){
-            alert("Fill all records!!!");
-        }
-        else{
-            var dataToSend={
-                "SkillName":name,
-                "Category":category,
-            };
+});
+function addskills(){
+
+    var name= document.getElementById("skillname").value;
+    var category= document.getElementById("implementation").value;
+    if(name==''||category==''){
+        alert("Fill all records!!!");
+    }
+    else{
+        var dataToSend={
+            "SkillName":name,
+            "Category":category,
+        };
         $.ajax({
             url: 'https://emphrms.herokuapp.com/skill',
             data: dataToSend,
@@ -240,23 +211,19 @@ $(document).ready(function(){
         });
     }
 }
-
 function changeStatus(userId){
     $.ajax({
         type:'PATCH',
         url:'https://emphrms.herokuapp.com/delete/'+userId,
         success:function(data){
-
             document.getElementById(userId).disabled=true;
             alert("employee removed!!!");
-
         },
         error:function(err){
             console.log(err);
         }
     });
 }
-
 function loadPageData2(page){
     var pageNumber = page;
     $.ajax({
@@ -264,11 +231,9 @@ function loadPageData2(page){
         url: 'https://emphrms.herokuapp.com/skills', 
         dataType:'json',
         headers:{
-
             "pagenumber":pageNumber,
             "limit":5
         },
-
         success: function(data) {
             $("#skills").empty();
             $('#skills').append('<tr><th>Skill</th><th>Implementation</th></tr>');
@@ -278,16 +243,11 @@ function loadPageData2(page){
                     '<tr><td id="name">' + data.recordset[i].Name+
                     '</td><td id="category">' + data.recordset[i].Category+
                     '</td></tr>'
-
                 );
-
             }  
         }  
     });
-
 }
-
-
 function loadPageData(page){
     var pageNumber = page;
     $.ajax({
@@ -295,11 +255,9 @@ function loadPageData(page){
         url: 'https://emphrms.herokuapp.com/employee', 
         dataType:'json',
         headers:{
-
             "pagenumber":pageNumber,
             "limit":2
         },
-
         success: function(data) {
             $("#user_table").empty();
             console.log(data);
@@ -307,7 +265,6 @@ function loadPageData(page){
             for (i = 0; i < data.recordset.length; i++) {
                 console.log(data.recordset[i].FirstName);
                 if(data.recordset[i].Status=='Inactive'){
-
                     $("#user_table").append(
                         '<tr><td id = "name">' +data.recordset[i].FirstName +" "+ data.recordset[i].LastName+
                         '</td><td id = "Email">' + data.recordset[i].Email +
@@ -317,7 +274,6 @@ function loadPageData(page){
                     );
                 }
                 else{
-
                     $("#user_table").append(
                         '<tr><td id = "name">' +data.recordset[i].FirstName +" "+ data.recordset[i].LastName+
                         '</td><td id = "Email">' + data.recordset[i].Email +
@@ -358,7 +314,6 @@ function loadDataForUpdate(user){
         }
     });
 }
-
 function updateEmployee(){
     var fname=document.getElementById('fname_update').value;
     var lname=document.getElementById('lname_update').value;
@@ -386,13 +341,16 @@ function updateEmployee(){
                 "Department":department,
                 "DateOfJoining":doj
             }
-    console.log(dataToSend);
-    $.ajax({
-        type:'PATCH',
-        url:'https://emphrms.herokuapp.com/employee/'+updateId,
-        data:dataToSend,
-        success:function(data){
-            alert(data);
+            console.log(dataToSend);
+            $.ajax({
+                type:'PATCH',
+                url:'https://emphrms.herokuapp.com/employee/'+updateId,
+                data:dataToSend,
+                success:function(data){
+                    alert(data);
+                }
+            });
         }
-    });
+    }
 }
+
