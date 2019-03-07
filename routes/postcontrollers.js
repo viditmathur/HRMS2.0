@@ -191,9 +191,8 @@ router.post("/employee", (req, res, next) => {
 
 //soft delete change the status to inactive
 router.patch('/delete/:id', function (req, res) {
-	res.header("Access-Control-Allow-Origin","*");
-	
-
+    res.header("Access-Control-Allow-Origin","*");
+    
     var EmployeeId=req.params.id;
     var request = new sql.Request();
     request.query("exec softDeleteEmployee @EmployeeId="+EmployeeId+";", function (err, recordset){
